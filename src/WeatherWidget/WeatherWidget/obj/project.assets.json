@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
+      "projectUniqueName": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\src\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
       "projectName": "WeatherWidget",
-      "projectPath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
+      "projectPath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\src\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
       "packagesPath": "C:\\Users\\525.khokhlovns\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\WeatherWidget\\obj\\",
+      "outputPath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\src\\WeatherWidget\\WeatherWidget\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\525.khokhlovns\\AppData\\Roaming\\NuGet\\NuGet.Config",

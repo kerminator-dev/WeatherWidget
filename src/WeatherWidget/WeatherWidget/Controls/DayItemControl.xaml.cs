@@ -13,11 +13,29 @@ namespace WeatherWidget.Controls
         /// </summary>
         private OpenWeatherDay _dayInfo;
 
+        /// <summary>
+        /// Конструктор DayItemControl
+        /// </summary>
         public DayItemControl()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Конструктор DayItemControl
+        /// </summary>
+        /// <param name="dayInfo">Данные о погоде за один день</param>
+        public DayItemControl(OpenWeatherDay dayInfo)
+        {
+            InitializeComponent();
+
+            UpdateViewData(dayInfo);
+        }
+
+        /// <summary>
+        /// Обновить представление данных на контроле
+        /// </summary>
+        /// <param name="dayInfo">Данные о погоде за один день</param>
         public void UpdateViewData(OpenWeatherDay dayInfo)
         {
             _dayInfo = dayInfo;

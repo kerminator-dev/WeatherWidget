@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H0XaHt97pq46Ez17gHH2IhjW70HplRtQ+fAjaGjICD0Ud5imgtJQZFAwufGT9HOSZxETvgbyv0g+gonlmsKBCQ==",
+  "dgSpecHash": "CUxG2oTBO/VPucGLYbAwrJGgqTvRD2zIbVABIMgpiYaWURVatjUbttugoG7j1FFyBUNdbYo6elCskft9PlbyCA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
+  "projectFilePath": "C:\\Users\\525.khokhlovns\\source\\repos\\WeatherWidget\\src\\WeatherWidget\\WeatherWidget\\WeatherWidget.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\525.khokhlovns\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

@@ -4,36 +4,81 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Height="300" Width="250"
+        Height="150" Width="230"
         WindowStyle="None" MouseDown="Window_MouseDown"
         AllowsTransparency="True"
         Background="Black">
     <Grid>
 
-        <StackPanel x:Name="DaysPanel"
-                    Grid.Column="1" 
-                    Grid.Row="0"
-                    Background="#2d325a"
-                    >
-            <StackPanel Grid.Column="2"
-                        Background="#1d213d"
-                        HorizontalAlignment="Stretch"
-                        Orientation="Horizontal"
-                        FlowDirection="RightToLeft">
-                <Button Style="{StaticResource ButtonStyle}"
+        <StackPanel Background="#2d325a">
+            <Grid Background="#1d213d">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Column="0"
+                       Style="{StaticResource LabelStyle}"
+                       Content="Settings"
+                       Foreground="White"
+                       FontSize="16"
+                       Padding="0px"
+                       Margin="10 0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"/>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Stretch"
+                            Orientation="Horizontal"
+                            FlowDirection="RightToLeft">
+                    <Button Style="{StaticResource ButtonStyle}"
                         x:Name="CloseButton"
                         Content="✕"
-                        FontSize="15" Click="CloseButton_Click"
-                        />
+                        FontSize="15" Click="CloseButton_Click"/>
 
-                <Button Style="{StaticResource ButtonStyle}"
+                    <Button Style="{StaticResource ButtonStyle}"
                         x:Name="HideButton"
                         Content="___" Click="HideButton_Click"/>
-            </StackPanel>
-            <Label Style="{StaticResource LabelStyle}"
-                   Foreground="White"
-                   Content="City"/>
-            <TextBox/>
+                </StackPanel>
+            </Grid>
+
+            <Border Padding="10px">
+                <StackPanel>
+                    <Label Style="{StaticResource LabelStyle}"
+                       Margin="0px"
+                       Foreground="White"
+                       Content="City:"/>
+                    <TextBox Style="{StaticResource TextBoxStyle}"
+                             Background="#1d213d"
+                             Padding="4px"
+                             Foreground="White"/>
+                    <StackPanel Orientation="Horizontal" 
+                                HorizontalAlignment="Center">
+                        <Button x:Name="AboutButton"
+                                Style="{StaticResource CircleButtonStyle}"
+                                Margin="0 0 10 0"
+                                Content="?"
+                                Width="30px"
+                                HorizontalAlignment="Stretch"
+                                FontSize="20px"
+                                Background="#1d213d"
+                                Foreground="LightGray" Cursor="Hand"/>
+
+                        <Button x:Name="CancelButton"
+                                HorizontalAlignment="Stretch"
+                                Style="{StaticResource FlatButtonStyle}"
+                                Content="Cancel"
+                                Background="#B33771" Click="CancelButton_Click"/>
+
+                        <Button x:Name="SaveButton"
+                                HorizontalAlignment="Stretch"
+                                Margin="10 0 0 0"
+                                Style="{StaticResource FlatButtonStyle}"
+                                Content="Save changes"
+                                Background="#7033ff" Click="SaveButton_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
         </StackPanel>
+
     </Grid>
 </Window>

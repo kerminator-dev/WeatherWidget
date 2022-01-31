@@ -19,5 +19,39 @@
             <Setter Property="Width" Value="22px"/>
             <Setter Property="Height" Value="22px"/>
         </Style>
+
+        <Style x:Key="TextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="8" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="FlatButtonStyle" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="30px"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="Margin" Value="0 14"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10 0"/>
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="12" />
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style x:Key="CircleButtonStyle" TargetType="Button" BasedOn="{StaticResource FlatButtonStyle}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="14" />
+                </Style>
+            </Style.Resources>
+        </Style>
     </Application.Resources>
 </Application>

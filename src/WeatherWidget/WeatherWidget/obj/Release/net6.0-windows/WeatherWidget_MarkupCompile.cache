@@ -4,12 +4,12 @@
 winexe
 C#
 .cs
-C:\Users\525.khokhlovns\source\repos\WeatherWidget\WeatherWidget\obj\Release\net6.0-windows\
+C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Release\net6.0-windows\
 WeatherWidget
 none
 false
 TRACE;RELEASE;NET;NET6_0;NETCOREAPP
-C:\Users\525.khokhlovns\source\repos\WeatherWidget\WeatherWidget\App.xaml
+C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\App.xaml
 3-2021836368
 
 11-1298280416

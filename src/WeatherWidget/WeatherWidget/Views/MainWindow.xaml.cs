@@ -78,10 +78,7 @@ namespace WeatherWidget.Views
         /// <param name="e"></param>
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Close window?", "Close", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                this.Close();
-            }
+            this.Close();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
