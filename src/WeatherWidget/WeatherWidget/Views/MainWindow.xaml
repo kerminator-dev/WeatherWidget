@@ -1,0 +1,122 @@
+﻿<Window x:Class="WeatherWidget.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:WeatherWidget.Controls"
+        mc:Ignorable="d"
+        Height="300" Width="420"
+        WindowStyle="None" MouseDown="Window_MouseDown"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.Resources>
+        <Style x:Key="TextStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="30 0"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+
+        <SolidColorBrush x:Key="TransparentBlack" Color="Black" Opacity="0.6" />
+        </Window.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/1.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Padding="10px">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions> 
+
+                <StackPanel Grid.Row="0"
+                            x:Name="TopPanel"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Left">
+
+                    <Label x:Name="CurrentDayOfWeek"
+                           Foreground="White"
+                           Content="Saturday"
+                           FontSize="18px"
+                           Padding="10 0"/>
+                    <Label x:Name="CurrentDate"
+                           Foreground="White"
+                           Content="27.01.2022"
+                           FontSize="20px"
+                           Padding="10 0"/>
+                    <Label x:Name="CurrentWeatherType" 
+                           Foreground="White"
+                           Content="Clouds"
+                           FontSize="22"
+                           Padding="10"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1"
+                            x:Name="BottomPanel"
+                            VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Left">
+
+                    <Label x:Name="CurrentMaxTemperature" 
+                           Foreground="White"
+                           Content="-30° C"
+                           FontSize="45"
+                           Padding="0 0"/>
+                    <Label x:Name="CurrentMinTemperature" 
+                           Foreground="White"
+                           Content="-20° C"
+                           FontSize="30"
+                           Padding="0 0"/>
+                    <Label x:Name="CurrentPlace" 
+                           Foreground="White"
+                           Content="Paris, Fr"
+                           FontSize="18"
+                           Padding="0 0"/>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <StackPanel x:Name="DaysPanel"
+                    Grid.Column="1" 
+                    Grid.Row="0"
+                    Background="{StaticResource TransparentBlack}">
+
+            <StackPanel Grid.Column="2"
+                        Orientation="Horizontal"
+                        FlowDirection="RightToLeft">
+
+                <Button Style="{StaticResource ButtonStyle}"
+                        x:Name="CloseButton"
+                        Content="✕"
+                        FontSize="15"
+                        Click="CloseButton_Click"/>
+
+                <Button Style="{StaticResource ButtonStyle}"
+                        
+                        x:Name="SettingsButton"
+                        HorizontalAlignment="Left"
+                        FontSize="13"
+                        Content="⚙" Click="SettingsButton_Click"/>
+
+                <Button Style="{StaticResource ButtonStyle}"
+                        x:Name="HideButton"
+                        Content="___" Click="HideButton_Click"/>
+
+            </StackPanel>
+
+            <controls:DayItemControl x:Name="Day1" />
+            <controls:DayItemControl x:Name="Day2"/>
+            <controls:DayItemControl x:Name="Day3"/>
+            <controls:DayItemControl x:Name="Day4"/>
+            <controls:DayItemControl x:Name="Day5"/>
+        </StackPanel>
+    </Grid>
+</Window>
