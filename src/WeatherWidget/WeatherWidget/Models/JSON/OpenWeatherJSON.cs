@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace WeatherWidget.Models
+namespace WeatherWidget.Models.JSON
 {
     /// <summary>
-    /// Ответ от сервера OpenWeather
+    /// Ответ от сервера OpenWeatherMap
     /// Данный класс повторяет структуру получаемого JSON-файла
-    /// JSON десереализируется в объект этого класса
+    /// JSON десереализируется в объект этого типа
     /// </summary>
     public class JSONResponce
     {
@@ -14,25 +14,25 @@ namespace WeatherWidget.Models
         /// Список из обхектов - данных на каждые 3 часа
         /// </summary>
         [JsonProperty("list")]
-        internal List<ListItem> Items { get; set; }
+        internal List<JSONListItem> Items { get; set; }
 
         /// <summary>
         /// Данные о городе
         /// </summary>
         [JsonProperty("city")]
-        internal City City { get; set; }
+        internal JSONCity City { get; set; }
     }
 
     /// <summary>
     /// Данные о погоде каждые 3 часа
     /// </summary>
-    public class ListItem
+    public class JSONListItem
     {
         [JsonProperty("main")]
-        public MainInfo MainInfo { get; set; }
+        public JSONMainInfo MainInfo { get; set; }
 
         [JsonProperty("weather")]
-        public List<WeatherInfo> Weathers { get; set; }
+        public List<JSONWeatherType> WeatherTypes { get; set; }
 
         [JsonProperty("dt_txt")]
         public string dt_txt { get; set; }
@@ -41,7 +41,7 @@ namespace WeatherWidget.Models
     /// <summary>
     /// Данные о температуре
     /// </summary>
-    public class MainInfo
+    public class JSONMainInfo
     {
         [JsonProperty("temp_min")]
         public double Temp_min { get; set; }
@@ -53,7 +53,7 @@ namespace WeatherWidget.Models
     /// <summary>
     /// Данные о типе погоды
     /// </summary>
-    public class WeatherInfo
+    public class JSONWeatherType
     {
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -62,7 +62,7 @@ namespace WeatherWidget.Models
     /// <summary>
     /// Данные о указанном городе
     /// </summary>
-    public class City
+    public class JSONCity
     {
         [JsonProperty("name")]
         public string Name { get; set; }

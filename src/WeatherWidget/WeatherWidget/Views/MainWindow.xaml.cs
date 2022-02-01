@@ -45,8 +45,8 @@ namespace WeatherWidget.Views
                 return;
 
             // Заполнние данными элементов слева
-            CurrentDayOfWeek.Content = _responce.Days[0].Date.DayOfWeek;
-            CurrentDate.Content = _responce.Days[0].Date.ToShortDateString();
+            CurrentDayOfWeek.Content = _responce.Days[0].WeatherStates[0].Date.DayOfWeek;
+            CurrentDate.Content = _responce.Days[0].WeatherStates[0].Date.ToShortDateString();
             CurrentWeatherType.Content = _responce.Days[0].GetFrequentDescription();
             CurrentMinTemperature.Content = _responce.Days[0].GetMinTemperature() + "℃";
             CurrentMaxTemperature.Content = _responce.Days[0].GetMaxTemperature() + "℃";

@@ -8,8 +8,18 @@
         WindowStyle="None" MouseDown="Window_MouseDown"
         AllowsTransparency="True"
         Background="Black">
+    
+    <Window.Resources>
+        <Style x:Key="CircleButtonStyle" TargetType="Button" BasedOn="{StaticResource FlatButtonStyle}">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="16" />
+                </Style>
+            </Style.Resources>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
-
         <StackPanel Background="#2d325a">
             <Grid Background="#1d213d">
                 <Grid.ColumnDefinitions>

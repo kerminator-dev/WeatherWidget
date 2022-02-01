@@ -41,7 +41,7 @@ namespace WeatherWidget.Controls
             _dayInfo = dayInfo;
             WeatherType.Content = _dayInfo.GetFrequentDescription();
             Temperature.Content = $"{_dayInfo.GetMinTemperature()}℃/{_dayInfo.GetMaxTemperature()}℃";
-            Date.Content = _dayInfo.Date.ToShortDateString();
+            Date.Content = _dayInfo.GetDate().ToShortDateString();
         }
     }
 }

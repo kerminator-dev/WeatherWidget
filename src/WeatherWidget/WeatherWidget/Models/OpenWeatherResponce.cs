@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using WeatherWidget.Models.JSON;
 
 namespace WeatherWidget.Models
 {
     /// <summary>
     /// Готовый класс - результат для работы с данными о погоде
     /// </summary>
-    public class OpenWeatherResponce
+    public partial class OpenWeatherResponce
     {
         /// <summary>
         /// Список дней с данными о погоде
@@ -17,14 +18,14 @@ namespace WeatherWidget.Models
         /// <summary>
         /// Данные о городе
         /// </summary>
-        public City City { get; private set; }
+        public JSONCity City { get; private set; }
 
         /// <summary>
         /// Констурктор OpenWeatherResponce
         /// </summary>
         /// <param name="days">Спиоск дней с данными о погоде</param>
         /// <param name="city">Данные о городе</param>
-        public OpenWeatherResponce(List<OpenWeatherDay> days, City city)
+        public OpenWeatherResponce(List<OpenWeatherDay> days, JSONCity city)
         {
             _days = days;
             City = city;

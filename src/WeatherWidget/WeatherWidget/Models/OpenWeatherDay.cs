@@ -10,30 +10,17 @@ namespace WeatherWidget.Models
     public class OpenWeatherDay
     {
         /// <summary>
-        /// Минимальная температура (каждые 3 часа)
+        /// Состояния погоды на каждые 3 часа
         /// </summary>
-        public List<double> MinTemperatures { get; set; }
+        public List<OpenWeatherState> WeatherStates { get; private set; }
 
         /// <summary>
-        /// Максимальная температура (каждые 3 часа)
+        /// Конструктор OpenWeatherDay
         /// </summary>
-        public List<double> MaxTemperatures { get; set; }
-
-        /// <summary>
-        /// Тип погоды (каждые 3 часа)
-        /// </summary>
-        public List<string> Descriptions { get; set; } 
-
-        /// <summary>
-        /// День в формате даты
-        /// </summary>
-        public DateTime Date { get; set; }
-
-        public OpenWeatherDay()
+        /// <param name="weatherStates"></param>
+        public OpenWeatherDay(List<OpenWeatherState> weatherStates)
         {
-            MinTemperatures = new List<double>();
-            MaxTemperatures = new List<double>();
-            Descriptions = new List<string>();
+            WeatherStates = weatherStates;
         }
 
         /// <summary>
@@ -51,11 +38,15 @@ namespace WeatherWidget.Models
         /// <returns>Минимальная температура за день</returns>
         public double GetMinTemperature(bool round = true)
         {
-            double result = MinTemperatures[0];
+            double result = WeatherStates[0].MinTemperature;
 
-            foreach (double temp in MinTemperatures)
-                if (result > temp)
-                    result = temp;
+            foreach (OpenWeatherState weather in WeatherStates)
+            {
+                if (result > weather.MinTemperature)
+                {
+                    result = weather.MinTemperature;
+                }
+            }
 
             return round ? Math.Round(result) : result;
         }
@@ -66,13 +57,26 @@ namespace WeatherWidget.Models
         /// <returns>Минимальная температура за день</returns>
         public double GetMaxTemperature(bool round = true)
         {
-            double result = MaxTemperatures[0];
+            double result = WeatherStates[0].MinTemperature;
 
-            foreach (double temp in MaxTemperatures)
-                if (result < temp)
-                    result = temp;
+            foreach (OpenWeatherState weather in WeatherStates)
+            {
+                if (result < weather.MinTemperature)
+                {
+                    result = weather.MinTemperature;
+                }
+            }
 
             return round ? Math.Round(result) : result;
+        }
+
+        /// <summary>
+        /// Получить дату
+        /// </summary>
+        /// <returns>Дата DateTime</returns>
+        public DateTime GetDate()
+        {
+            return new DateTime(WeatherStates[0].Date.Year, WeatherStates[0].Date.Month, WeatherStates[0].Date.Day);
         }
 
         /// <summary>
@@ -82,7 +86,8 @@ namespace WeatherWidget.Models
         /// <returns></returns>
         public string GetUniqueDescriptions()
         {
-            var uniqueDescription = Descriptions.OrderByDescending(i => i).Distinct<string>().ToList();
+            // Получение уникальных типов погоды по убыванию
+            var uniqueDescription = WeatherStates.OrderByDescending(i => i.Description).DistinctBy( j => j.Description).ToList();
             string result = string.Empty;
 
             if (uniqueDescription.Count > 0)
@@ -103,11 +108,11 @@ namespace WeatherWidget.Models
         /// <returns></returns>
         public string GetFrequentDescription()
         {
-            var uniqueDescription = Descriptions.OrderByDescending(i => i).Distinct<string>().ToList();
+            var uniqueWeatherStatess = WeatherStates.OrderByDescending(i => i.Description).DistinctBy(j => j.Description).ToList();
 
-            if (uniqueDescription.Count > 0)
+            if (uniqueWeatherStatess.Count > 0)
             {
-                return $"{uniqueDescription[0]}";
+                return $"{uniqueWeatherStatess[0].Description}";
             }
             else return "no weather data";
         }

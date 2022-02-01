@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Windows;
+using WeatherWidget.Models.JSON;
 
 namespace WeatherWidget.Models
 {
@@ -34,26 +34,25 @@ namespace WeatherWidget.Models
         {
             try
             {
-                string responce;
-
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(_url);
                 HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                string responce = String.Empty;
+
                 using (StreamReader streamReader = new StreamReader(httpWebResponse.GetResponseStream()))
                 {
                     responce = streamReader.ReadToEnd();
                 }
+
                 httpWebResponse.Close();
 
                 JSONResponce objResponce = JsonConvert.DeserializeObject<JSONResponce>(responce);
 
-                return Parser.ToOpenWeatherResponce(in objResponce);
+                return Convert.ToOpenWeatherResponce(ref objResponce);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                return null;
             }
-
-            return null;
         }
 
         /// <summary>

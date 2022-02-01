@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\525.khokhlovns\source\repos\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\
+C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\
 WeatherWidget
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\525.khokhlovns\source\repos\WeatherWidget\WeatherWidget\App.xaml
+C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\App.xaml
 3-2021836368
 
-13-1594873854
+14-1102886164
 195-308317482
 Controls\DayItemControl.xaml;Views\MainWindow.xaml;Views\SettingsWindow.xaml;
 
-True
+False
 
