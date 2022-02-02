@@ -15,7 +15,7 @@ namespace WeatherWidget.Models
         /// <param name="jsonResponce">Десириализованный JSON объект, полученный с сервера OpenWeatherMap</param>
         /// <param name="responce">Преобразованный объект типа JSONResponce в объект типа OpenWeatherResponce</param>
         /// <returns>true - преобразование успешно выполнено, false - не удалось преобразовать</returns>
-        public static OpenWeatherResponce? ToOpenWeatherResponce(ref JSONResponce jsonResponce)
+        public static OpenWeatherResponce? ToOpenWeatherResponce(JSONResponce jsonResponce)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace WeatherWidget.Models
                     {
                         // Создание дня и добавление ранее обработаннх состояний погоды за этот день
                         days.Add(new OpenWeatherDay(weatherStates));
-                        weatherStates.Clear();
+                        weatherStates = new List<OpenWeatherState>();
                         lastItemDay = currentItemDay;
                         // Обработка состояния погоды за новый день
                         weatherStates.Add(ToWeatherState(item));
@@ -62,7 +62,7 @@ namespace WeatherWidget.Models
         /// </summary>
         /// <param name="item">Данные о погоде (за каждый е 3 часа)</param>
         /// <returns></returns>
-        public static OpenWeatherState ToWeatherState(in JSONListItem item)
+        public static OpenWeatherState ToWeatherState(JSONListItem item)
         {
             return new OpenWeatherState
             (

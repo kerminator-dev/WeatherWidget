@@ -7,8 +7,10 @@
         Height="150" Width="230"
         WindowStyle="None" MouseDown="Window_MouseDown"
         AllowsTransparency="True"
-        Background="Black">
-    
+        Background="Black"
+        xmlns:properties="clr-namespace:WeatherWidget.Properties"
+        WindowStartupLocation="CenterOwner">
+
     <Window.Resources>
         <Style x:Key="CircleButtonStyle" TargetType="Button" BasedOn="{StaticResource FlatButtonStyle}">
             <Style.Resources>
@@ -31,7 +33,7 @@
                        Style="{StaticResource LabelStyle}"
                        Content="Settings"
                        Foreground="White"
-                       FontSize="16"
+                       FontSize="14"
                        Padding="0px"
                        Margin="10 0"
                        VerticalAlignment="Center"
@@ -60,7 +62,9 @@
                     <TextBox Style="{StaticResource TextBoxStyle}"
                              Background="#1d213d"
                              Padding="4px"
-                             Foreground="White"/>
+                             Foreground="White"
+                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentCity, Mode=TwoWay}"/>
+
                     <StackPanel Orientation="Horizontal" 
                                 HorizontalAlignment="Center">
                         <Button x:Name="AboutButton"

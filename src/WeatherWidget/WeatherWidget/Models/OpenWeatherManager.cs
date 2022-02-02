@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
 using WeatherWidget.Models.JSON;
 
 namespace WeatherWidget.Models
@@ -30,7 +32,7 @@ namespace WeatherWidget.Models
         /// Получить данные о погоде
         /// </summary>
         /// <returns>Объект OpenWeatherResponce - данные о погоде</returns>
-        public OpenWeatherResponce? GetResponce()
+        public async Task<OpenWeatherResponce?> GetResponce()
         {
             try
             {
@@ -47,9 +49,9 @@ namespace WeatherWidget.Models
 
                 JSONResponce objResponce = JsonConvert.DeserializeObject<JSONResponce>(responce);
 
-                return Convert.ToOpenWeatherResponce(ref objResponce);
+                return Convert.ToOpenWeatherResponce(objResponce);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

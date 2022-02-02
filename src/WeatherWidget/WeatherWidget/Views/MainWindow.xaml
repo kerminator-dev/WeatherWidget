@@ -46,17 +46,29 @@
                            Foreground="White"
                            Content="Saturday"
                            FontSize="18px"
-                           Padding="10 0"/>
+                           Padding="10 0">
+                        <Label.ToolTip>
+                            <ToolTip>Current day of week</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                     <Label x:Name="CurrentDate"
                            Foreground="White"
                            Content="27.01.2022"
                            FontSize="20px"
-                           Padding="10 0"/>
+                           Padding="10 0">
+                        <Label.ToolTip>
+                            <ToolTip>Current date</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                     <Label x:Name="CurrentWeatherType" 
                            Foreground="White"
                            Content="Clouds"
                            FontSize="22"
-                           Padding="10"/>
+                           Padding="10">
+                        <Label.ToolTip>
+                            <ToolTip>Current weather type</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                 </StackPanel>
 
                 <StackPanel Grid.Row="1"
@@ -68,19 +80,30 @@
                            Foreground="White"
                            Content="-30° C"
                            FontSize="45"
-                           Padding="0 0"/>
+                           Padding="0 0">
+                        <Label.ToolTip>
+                            <ToolTip>Maximum temperature for the current day</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                     <Label x:Name="CurrentMinTemperature" 
                            Foreground="White"
                            Content="-20° C"
                            FontSize="30"
-                           Padding="0 0"/>
+                           Padding="0 0">
+                        <Label.ToolTip>
+                            <ToolTip>Minimal temperature for the current day</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                     <Label x:Name="CurrentPlace" 
                            Foreground="White"
                            Content="Paris, Fr"
                            FontSize="18"
-                           Padding="0 0"/>
+                           Padding="0 0">
+                        <Label.ToolTip>
+                            <ToolTip>Current place and country code</ToolTip>
+                        </Label.ToolTip>
+                    </Label>
                 </StackPanel>
-
             </Grid>
         </Border>
 
@@ -97,18 +120,40 @@
                         x:Name="CloseButton"
                         Content="✕"
                         FontSize="15"
-                        Click="CloseButton_Click"/>
+                        Click="CloseButton_Click">
+                    <Button.ToolTip>
+                        <ToolTip>Close window</ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
                 <Button Style="{StaticResource ButtonStyle}"
-                        
                         x:Name="SettingsButton"
                         HorizontalAlignment="Left"
                         FontSize="13"
-                        Content="⚙" Click="SettingsButton_Click"/>
+                        Content="⚙" Click="SettingsButton_Click">
+                    <Button.ToolTip>
+                        <ToolTip>Settings</ToolTip>
+                    </Button.ToolTip>
+                </Button>
+
+                <Button Style="{StaticResource ButtonStyle}"
+                        Padding="0 0 0 0"
+                        x:Name="UpdateButton"
+                        HorizontalAlignment="Left"
+                        FontSize="17"
+                        Content="⭮" Click="UpdateButton_Click">
+                    <Button.ToolTip>
+                        <ToolTip>Update weather data</ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
                 <Button Style="{StaticResource ButtonStyle}"
                         x:Name="HideButton"
-                        Content="___" Click="HideButton_Click"/>
+                        Content="___" Click="HideButton_Click">
+                    <Button.ToolTip>
+                        <ToolTip>Hide Window</ToolTip>
+                    </Button.ToolTip>
+                </Button>
 
             </StackPanel>
 

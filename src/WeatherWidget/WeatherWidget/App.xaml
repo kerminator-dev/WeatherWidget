@@ -30,15 +30,13 @@
             </Style.Resources>
         </Style>
 
-        <Style x:Key="FlatButtonStyle" TargetType="Button">
+        <Style x:Key="FlatButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
 
             <Setter Property="Height" Value="30px"/>
             <Setter Property="Width" Value="Auto"/>
             <Setter Property="Margin" Value="0 14"/>
             <Setter Property="Padding" Value="10 0"/>
-            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="#B33771"/>
-            <Setter Property="Foreground" Value="White"/>
             <Style.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="12" />

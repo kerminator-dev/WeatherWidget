@@ -9,34 +9,20 @@ namespace WeatherWidget.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+
         /// <summary>
         /// Мкнеджер погоды, выдающий данные
         /// </summary>
-        private readonly OpenWeatherManager? _weatherManager;
+        private OpenWeatherManager? _weatherManager;
 
         /// <summary>
         /// Результат с данными о погоде, получемый от OpenWeatherManager
         /// </summary>
-        private readonly OpenWeatherResponce? _responce;
+        private OpenWeatherResponce? _responce;
 
-        public OpenWeatherResponce? Responce => _responce;
-
-        /// <summary>
-        /// Окно настроек
-        /// </summary>
-        private SettingsWindow _settingsWindow;
         public MainWindow()
         {
             InitializeComponent();
-            
-            _weatherManager = new OpenWeatherManager
-            (
-                city: "Krasnoperekopsk", 
-                token: Properties.Settings.Default.APIKey
-            );
-            _responce = _weatherManager.GetResponce();
-
-            UpdateViewData();
         }
 
         private void UpdateViewData()
@@ -78,20 +64,29 @@ namespace WeatherWidget.Views
         /// <param name="e"></param>
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            SettingsWindow.Instance.Close();
             this.Close();
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_settingsWindow == null)
-                _settingsWindow = new SettingsWindow();
-
-            _settingsWindow.Show();
+            SettingsWindow.Instance.Show();
         }
 
         private void HideButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            _weatherManager = new OpenWeatherManager
+            (
+                city: Properties.Settings.Default.CurrentCity,
+                token: Properties.Settings.Default.APIKey
+            );
+            _responce = _weatherManager.GetResponce().Result;
+            UpdateViewData();
         }
     }
 }

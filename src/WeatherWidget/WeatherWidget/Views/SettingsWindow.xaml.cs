@@ -8,7 +8,15 @@ namespace WeatherWidget.Views
     /// </summary>
     public partial class SettingsWindow : Window
     {
-        public SettingsWindow()
+        private static SettingsWindow _instance;
+        public static SettingsWindow Instance
+        {
+            get
+            { 
+                return _instance ?? (_instance = new SettingsWindow());
+            }
+        }
+        private SettingsWindow()
         {
             InitializeComponent();
         }
@@ -21,7 +29,7 @@ namespace WeatherWidget.Views
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void HideButton_Click(object sender, RoutedEventArgs e)
@@ -31,12 +39,13 @@ namespace WeatherWidget.Views
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Properties.Settings.Default.Save();
+            this.Hide();
         }
     }
 }

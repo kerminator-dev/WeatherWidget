@@ -31,5 +31,17 @@ namespace WeatherWidget.Properties {
                 return ((string)(this["APIKey"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Moscow")]
+        public string CurrentCity {
+            get {
+                return ((string)(this["CurrentCity"]));
+            }
+            set {
+                this["CurrentCity"] = value;
+            }
+        }
     }
 }
