@@ -59,8 +59,17 @@ namespace WeatherWidget.Models
         {
             this.City = city;
 
+            return Convert.ToOpenWeatherResponce(this.GetJSONResponce());
+        }
+
+        /// <summary>
+        /// Получить JSON с данными о погоде
+        /// </summary>
+        /// <returns>Данные о погоде JSONResponce</returns>
+        private JSONResponce? GetJSONResponce()
+        {
             try
-            {
+            { 
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Url);
                 HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 string responce = String.Empty;
@@ -72,9 +81,7 @@ namespace WeatherWidget.Models
 
                 httpWebResponse.Close();
 
-                JSONResponce objResponce = JsonConvert.DeserializeObject<JSONResponce>(responce);
-
-                return Convert.ToOpenWeatherResponce(objResponce);
+                return JsonConvert.DeserializeObject<JSONResponce>(responce);
             }
             catch (Exception)
             {
