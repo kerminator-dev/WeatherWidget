@@ -7,7 +7,7 @@
         Height="300" Width="420"
         WindowStyle="None" MouseDown="Window_MouseDown"
         AllowsTransparency="True"
-        Background="Transparent">
+        Background="Transparent" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style x:Key="TextStyle" TargetType="Label">

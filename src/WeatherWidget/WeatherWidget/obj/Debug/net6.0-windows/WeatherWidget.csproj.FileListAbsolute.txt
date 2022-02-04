@@ -54,3 +54,4 @@ C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidg
 C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\ref\WeatherWidget.dll
 C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\WeatherWidget.pdb
 C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\WeatherWidget.genruntimeconfig.cache
+C:\Users\525.khokhlovns\source\repos\WeatherWidget\src\WeatherWidget\WeatherWidget\obj\Debug\net6.0-windows\WeatherWidget.csproj.AssemblyReference.cache

@@ -122,5 +122,14 @@ namespace WeatherWidget.Views
             UpdateWeatherData();
             UpdateViewData();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Properties.Settings.Default.StartupUpdate)
+            {
+                UpdateWeatherData();
+                UpdateViewData();
+            }
+        }
     }
 }

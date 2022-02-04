@@ -17,6 +17,8 @@ namespace WeatherWidget.Models
         /// <returns>true - преобразование успешно выполнено, false - не удалось преобразовать</returns>
         public static OpenWeatherResponce? ToOpenWeatherResponce(JSONResponce jsonResponce)
         {
+            if (jsonResponce == null) return null;
+
             try
             {
                 // Ежедневная информация о погоде

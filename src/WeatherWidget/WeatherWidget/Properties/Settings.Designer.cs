@@ -43,5 +43,17 @@ namespace WeatherWidget.Properties {
                 this["CurrentCity"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool StartupUpdate {
+            get {
+                return ((bool)(this["StartupUpdate"]));
+            }
+            set {
+                this["StartupUpdate"] = value;
+            }
+        }
     }
 }
