@@ -25,14 +25,21 @@ namespace WeatherWidget.Models
         /// <summary>
         /// Дата и время
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime DateTime { get; set; }
 
-        public OpenWeatherState(double minTemperature, double maxTemperature, string description, DateTime date)
+        /// <summary>
+        /// Состояние погоды
+        /// </summary>
+        /// <param name="minTemperature">Минимальная температура</param>
+        /// <param name="maxTemperature">Максимальная температура</param>
+        /// <param name="description">Тип погоды</param>
+        /// <param name="date">Дата и  время</param>
+        public OpenWeatherState(double minTemperature, double maxTemperature, string description, DateTime dateTime)
         {
             MinTemperature = minTemperature;
             MaxTemperature = maxTemperature;
             Description = description;
-            Date = date;
+            DateTime = dateTime;
         }
     }
 }

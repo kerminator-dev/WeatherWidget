@@ -76,7 +76,7 @@ namespace WeatherWidget.Models
         /// <returns>Дата DateTime</returns>
         public DateTime GetDate()
         {
-            return new DateTime(WeatherStates[0].Date.Year, WeatherStates[0].Date.Month, WeatherStates[0].Date.Day);
+            return new DateTime(WeatherStates[0].DateTime.Year, WeatherStates[0].DateTime.Month, WeatherStates[0].DateTime.Day);
         }
 
         /// <summary>

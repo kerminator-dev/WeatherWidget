@@ -2,8 +2,6 @@
 using System;
 using System.IO;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using WeatherWidget.Models.JSON;
 
 namespace WeatherWidget.Models
@@ -14,29 +12,56 @@ namespace WeatherWidget.Models
     public class OpenWeatherManager
     {
         /// <summary>
-        /// Полный адрес для получения данных от API OpenWeather
+        /// Город
         /// </summary>
-        private string _url { get; set; }
+        private string _city;
 
         /// <summary>
-        /// Инициализировать OpenWeatherManager
+        /// Город
         /// </summary>
-        /// <param name="city">город</param>
-        /// <param name="token">токен для доступа к API OpenWeatherMap</param>
-        public OpenWeatherManager(string city, string token)
+        public string City
         {
-            _url = $"http://api.openweathermap.org/data/2.5/forecast?q={city}&lang=en-us&units=metric&appid={token}";
+            get => _city;
+            private set
+            {
+                _city = value;
+
+                // Обновление URL
+                Url = $"http://api.openweathermap.org/data/2.5/forecast?q={value}&lang=en-us&units=metric&appid={ApiKey}";
+            }
+        }
+
+        /// <summary>
+        /// Полный адрес для получения данных от API OpenWeather
+        /// </summary>
+        private string Url { get; set; }
+
+        /// <summary>
+        /// API-ключ/токен для доступа к API OpenWeatherMap
+        /// </summary>
+        private string ApiKey { get; set; }
+
+        /// <summary>
+        /// Главный менеджер для работы с OpenWeatherMap API
+        /// </summary>
+        /// <param name="city">Город</param>
+        /// <param name="apiKey">Токен для доступа к API OpenWeatherMap</param>
+        public OpenWeatherManager(string apiKey)
+        {
+            ApiKey = apiKey;
         }
 
         /// <summary>
         /// Получить данные о погоде
         /// </summary>
         /// <returns>Объект OpenWeatherResponce - данные о погоде</returns>
-        public async Task<OpenWeatherResponce?> GetResponce()
+        public OpenWeatherResponce? GetWeatherData(string city)
         {
+            this.City = city;
+
             try
             {
-                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(_url);
+                HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(Url);
                 HttpWebResponse httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 string responce = String.Empty;
 
@@ -62,7 +87,7 @@ namespace WeatherWidget.Models
         /// </summary>
         /// <param name="URL">Полный адрес к серверу и API-методу с параметрами</param>
         /// <returns>true - URL имеет верный формат и сервер вернул ответ, false - сервер не ответил</returns>
-        private static bool IsValidURL(in string URL)
+        private static bool IsValidURL(string URL)
         {
             try
             {

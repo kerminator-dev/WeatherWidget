@@ -8,7 +8,10 @@ namespace WeatherWidget.Views
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        #region Реализация Singleton
+
         private static SettingsWindow _instance;
+
         public static SettingsWindow Instance
         {
             get
@@ -16,6 +19,8 @@ namespace WeatherWidget.Views
                 return _instance ?? (_instance = new SettingsWindow());
             }
         }
+
+        #endregion
         private SettingsWindow()
         {
             InitializeComponent();

@@ -31,11 +31,17 @@ namespace WeatherWidget.Models.JSON
         [JsonProperty("main")]
         public JSONMainInfo MainInfo { get; set; }
 
+        /// <summary>
+        /// Список, состоящий из типов погоды (обычно 1 тип погоды)
+        /// </summary>
         [JsonProperty("weather")]
         public List<JSONWeatherType> WeatherTypes { get; set; }
 
+        /// <summary>
+        /// Дата в формате строки
+        /// </summary>
         [JsonProperty("dt_txt")]
-        public string dt_txt { get; set; }
+        public string DateTime { get; set; }
     }
 
     /// <summary>
@@ -43,9 +49,15 @@ namespace WeatherWidget.Models.JSON
     /// </summary>
     public class JSONMainInfo
     {
+        /// <summary>
+        /// Минимальная температура
+        /// </summary>
         [JsonProperty("temp_min")]
         public double Temp_min { get; set; }
 
+        /// <summary>
+        /// Максимальная температура
+        /// </summary>
         [JsonProperty("temp_max")]
         public double Temp_max { get; set; }
     }
@@ -55,6 +67,9 @@ namespace WeatherWidget.Models.JSON
     /// </summary>
     public class JSONWeatherType
     {
+        /// <summary>
+        /// Тип погоды
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
     }
@@ -64,9 +79,15 @@ namespace WeatherWidget.Models.JSON
     /// </summary>
     public class JSONCity
     {
+        /// <summary>
+        /// Название города
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Страна
+        /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
     }

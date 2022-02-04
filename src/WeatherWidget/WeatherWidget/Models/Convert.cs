@@ -24,7 +24,7 @@ namespace WeatherWidget.Models
                 // Состояния о погоде (каждый элемент с интервалом в 3 часа)
                 List<OpenWeatherState> weatherStates = new List<OpenWeatherState>();
                 // День прошлого элемента (нужен для сравнения дат)
-                int lastItemDay = DateTime.Parse(jsonResponce.Items[0].dt_txt).Day;
+                int lastItemDay = DateTime.Parse(jsonResponce.Items[0].DateTime).Day;
                 // День текущего элемента (нужен для сравнения дат)
                 int currentItemDay;
 
@@ -32,7 +32,7 @@ namespace WeatherWidget.Models
                 // В каждом дне до 8 состояний погоды (3 часа * 8 = 24 часа)
                 foreach (var item in jsonResponce.Items)
                 {
-                    currentItemDay = DateTime.Parse(item.dt_txt).Day;
+                    currentItemDay = DateTime.Parse(item.DateTime).Day;
 
                     if (lastItemDay == currentItemDay)
                     {
@@ -45,7 +45,7 @@ namespace WeatherWidget.Models
                         weatherStates = new List<OpenWeatherState>();
                         lastItemDay = currentItemDay;
                         // Обработка состояния погоды за новый день
-                        weatherStates.Add(ToWeatherState(item));
+                        weatherStates.Add(Convert.ToWeatherState(item));
                     }
                 }
 
@@ -69,7 +69,7 @@ namespace WeatherWidget.Models
                 minTemperature: item.MainInfo.Temp_min,
                 maxTemperature: item.MainInfo.Temp_max,
                 description: item.WeatherTypes[0].Description,
-                date: DateTime.Parse(item.dt_txt)
+                dateTime: DateTime.Parse(item.DateTime)
             );
         }
     }

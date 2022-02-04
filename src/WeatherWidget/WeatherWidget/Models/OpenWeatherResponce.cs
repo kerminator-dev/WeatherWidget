@@ -4,7 +4,7 @@ using WeatherWidget.Models.JSON;
 namespace WeatherWidget.Models
 {
     /// <summary>
-    /// Готовый класс - результат для работы с данными о погоде
+    /// Данные о погоде
     /// </summary>
     public partial class OpenWeatherResponce
     {
@@ -21,7 +21,7 @@ namespace WeatherWidget.Models
         public JSONCity City { get; private set; }
 
         /// <summary>
-        /// Констурктор OpenWeatherResponce
+        /// Данные о погоде
         /// </summary>
         /// <param name="days">Спиоск дней с данными о погоде</param>
         /// <param name="city">Данные о городе</param>

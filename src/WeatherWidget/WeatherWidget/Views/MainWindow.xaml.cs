@@ -25,14 +25,17 @@ namespace WeatherWidget.Views
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Обновить представление окна в соответствии с полученными данными _responce
+        /// </summary>
         private void UpdateViewData()
         {
             if (_responce == null || _responce.Days.Count < 5)
                 return;
 
             // Заполнние данными элементов слева
-            CurrentDayOfWeek.Content = _responce.Days[0].WeatherStates[0].Date.DayOfWeek;
-            CurrentDate.Content = _responce.Days[0].WeatherStates[0].Date.ToShortDateString();
+            CurrentDayOfWeek.Content = _responce.Days[0].WeatherStates[0].DateTime.DayOfWeek;
+            CurrentDate.Content = _responce.Days[0].WeatherStates[0].DateTime.ToShortDateString();
             CurrentWeatherType.Content = _responce.Days[0].GetFrequentDescription();
             CurrentMinTemperature.Content = _responce.Days[0].GetMinTemperature() + "℃";
             CurrentMaxTemperature.Content = _responce.Days[0].GetMaxTemperature() + "℃";
@@ -68,24 +71,43 @@ namespace WeatherWidget.Views
             this.Close();
         }
 
+        /// <summary>
+        /// Кнопка "Настройки"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow.Instance.Show();
         }
 
+        /// <summary>
+        /// Кнопка "Скрыть окно"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HideButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
 
+        /// <summary>
+        /// Кнопка "Обновить данные"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             _weatherManager = new OpenWeatherManager
             (
-                city: Properties.Settings.Default.CurrentCity,
-                token: Properties.Settings.Default.APIKey
+                apiKey: Properties.Settings.Default.APIKey
             );
-            _responce = _weatherManager.GetResponce().Result;
+
+            _responce = _weatherManager.GetWeatherData
+            (
+                city: Properties.Settings.Default.CurrentCity
+            );
+
             UpdateViewData();
         }
     }
