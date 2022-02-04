@@ -46,10 +46,6 @@
                         x:Name="CloseButton"
                         Content="✕"
                         FontSize="15" Click="CloseButton_Click"/>
-
-                    <Button Style="{StaticResource ButtonStyle}"
-                        x:Name="HideButton"
-                        Content="___" Click="HideButton_Click"/>
                 </StackPanel>
             </Grid>
 
@@ -63,7 +59,11 @@
                              Background="#1d213d"
                              Padding="4px"
                              Foreground="White"
-                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentCity, Mode=TwoWay}"/>
+                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentCity, Mode=TwoWay}">
+                        <TextBox.ToolTip>
+                            Current city
+                        </TextBox.ToolTip>
+                    </TextBox>
 
                     <StackPanel Orientation="Horizontal" 
                                 HorizontalAlignment="Center">
@@ -73,22 +73,34 @@
                                 Content="?"
                                 Width="30px"
                                 HorizontalAlignment="Stretch"
-                                FontSize="20px"
+                                FontSize="16px"
                                 Background="#1d213d"
-                                Foreground="LightGray" Cursor="Hand"/>
+                                Foreground="LightGray" Cursor="Hand">
+                            <Button.ToolTip>
+                                Details
+                            </Button.ToolTip>
+                        </Button>
 
                         <Button x:Name="CancelButton"
                                 HorizontalAlignment="Stretch"
                                 Style="{StaticResource FlatButtonStyle}"
                                 Content="Cancel"
-                                Background="#B33771" Click="CancelButton_Click"/>
+                                Background="#B33771" Click="CancelButton_Click">
+                            <Button.ToolTip>
+                                Close window without saving current settings
+                            </Button.ToolTip>
+                        </Button>
 
                         <Button x:Name="SaveButton"
                                 HorizontalAlignment="Stretch"
                                 Margin="10 0 0 0"
                                 Style="{StaticResource FlatButtonStyle}"
                                 Content="Save changes"
-                                Background="#7033ff" Click="SaveButton_Click"/>
+                                Background="#7033ff" Click="SaveButton_Click">
+                            <Button.ToolTip>
+                                Save current settings
+                            </Button.ToolTip>
+                        </Button>
                     </StackPanel>
                 </StackPanel>
             </Border>

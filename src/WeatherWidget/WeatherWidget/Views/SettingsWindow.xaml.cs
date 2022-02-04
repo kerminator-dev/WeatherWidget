@@ -37,11 +37,6 @@ namespace WeatherWidget.Views
             this.Hide();
         }
 
-        private void HideButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.WindowState = WindowState.Minimized;
-        }
-
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
