@@ -12,14 +12,6 @@
         WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
-        <Style x:Key="CircleButtonStyle" TargetType="Button" BasedOn="{StaticResource FlatButtonStyle}">
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="16" />
-                </Style>
-            </Style.Resources>
-        </Style>
-
         <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
             <Setter Property="Cursor" Value="Hand"/>
             <Setter Property="Margin" Value="0 10 0 0"/>
@@ -158,20 +150,7 @@
                     </CheckBox>
 
                     <StackPanel Orientation="Horizontal" 
-                                HorizontalAlignment="Center">
-                        <Button x:Name="AboutButton"
-                                Style="{StaticResource CircleButtonStyle}"
-                                Margin="0 0 10 0"
-                                Content="?"
-                                Width="30px"
-                                HorizontalAlignment="Stretch"
-                                FontSize="16px"
-                                Background="#1d213d"
-                                Foreground="LightGray" Cursor="Hand">
-                            <Button.ToolTip>
-                                Details
-                            </Button.ToolTip>
-                        </Button>
+                                HorizontalAlignment="Right">
 
                         <Button x:Name="CancelButton"
                                 HorizontalAlignment="Stretch"
