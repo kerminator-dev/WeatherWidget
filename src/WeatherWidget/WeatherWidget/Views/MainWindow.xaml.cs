@@ -26,6 +26,27 @@ namespace WeatherWidget.Views
         }
 
         /// <summary>
+        /// Обновить данные о погоде
+        /// </summary>
+        private void UpdateWeatherData()
+        {
+            _weatherManager = new OpenWeatherManager
+            (
+                apiKey: Properties.Settings.Default.APIKey
+            );
+
+            _responce = _weatherManager.GetWeatherData
+            (
+                city: Properties.Settings.Default.CurrentCity
+            );
+
+            if (_responce == null)
+            {
+                MessageBox.Show("Failed to get data from OpenWeatherMap server!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        /// <summary>
         /// Обновить представление окна в соответствии с полученными данными _responce
         /// </summary>
         private void UpdateViewData()
@@ -98,16 +119,7 @@ namespace WeatherWidget.Views
         /// <param name="e"></param>
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            _weatherManager = new OpenWeatherManager
-            (
-                apiKey: Properties.Settings.Default.APIKey
-            );
-
-            _responce = _weatherManager.GetWeatherData
-            (
-                city: Properties.Settings.Default.CurrentCity
-            );
-
+            UpdateWeatherData();
             UpdateViewData();
         }
     }
