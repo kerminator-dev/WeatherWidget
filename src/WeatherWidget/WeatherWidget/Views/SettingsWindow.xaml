@@ -45,7 +45,11 @@
                     <Button Style="{StaticResource ButtonStyle}"
                         x:Name="CloseButton"
                         Content="✕"
-                        FontSize="15" Click="CloseButton_Click"/>
+                        FontSize="15" Click="CloseButton_Click">
+                        <Button.ToolTip>
+                            Close window without saving changes
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </Grid>
 
@@ -87,7 +91,7 @@
                                 Content="Cancel"
                                 Background="#B33771" Click="CancelButton_Click">
                             <Button.ToolTip>
-                                Close window without saving current settings
+                                Close window without saving changes
                             </Button.ToolTip>
                         </Button>
 
