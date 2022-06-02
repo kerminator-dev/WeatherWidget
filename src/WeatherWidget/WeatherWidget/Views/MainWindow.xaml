@@ -2,12 +2,13 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:WeatherWidget.Controls"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:WeatherWidget.Views" xmlns:viewmodels="clr-namespace:WeatherWidget.ViewModels"
         mc:Ignorable="d"
         Height="300" Width="420"
         WindowStyle="None" MouseDown="Window_MouseDown"
+        x:Name="xWindow"
         AllowsTransparency="True"
-        Background="Transparent" Loaded="Window_Loaded">
+        Background="Transparent">
 
     <Window.Resources>
         <Style x:Key="TextStyle" TargetType="Label">
@@ -17,7 +18,24 @@
         </Style>
 
         <SolidColorBrush x:Key="TransparentBlack" Color="Black" Opacity="0.6" />
-        </Window.Resources>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded" >
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="(Window.Opacity)"
+                                 From="0.0" To="1.0" Duration="0:0:1"
+                                 AutoReverse="False">
+                        <DoubleAnimation.EasingFunction>
+                            <QuarticEase EasingMode="EaseInOut"/>
+                        </DoubleAnimation.EasingFunction>
+                    </DoubleAnimation>
+
+                   
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
 
     <Grid>
         <Grid.Background>
@@ -44,7 +62,7 @@
 
                     <Label x:Name="CurrentDayOfWeek"
                            Foreground="White"
-                           Content="Saturday"
+                           Content="{Binding Path=CurrentDayOfWeek}"
                            FontSize="18px"
                            Padding="10 0">
                         <Label.ToolTip>
@@ -53,7 +71,7 @@
                     </Label>
                     <Label x:Name="CurrentDate"
                            Foreground="White"
-                           Content="27.01.2022"
+                           Content="{Binding Path=CurrentDate}"
                            FontSize="20px"
                            Padding="10 0">
                         <Label.ToolTip>
@@ -62,7 +80,7 @@
                     </Label>
                     <Label x:Name="CurrentWeatherType" 
                            Foreground="White"
-                           Content="Clouds"
+                           Content="{Binding Path=CurrentWeatherType}"
                            FontSize="22"
                            Padding="10">
                         <Label.ToolTip>
@@ -78,7 +96,7 @@
 
                     <Label x:Name="CurrentMaxTemperature" 
                            Foreground="White"
-                           Content="-30° C"
+                           Content="{Binding Path=CurrentMaxTemperature}"
                            FontSize="45"
                            Padding="0 0">
                         <Label.ToolTip>
@@ -87,7 +105,7 @@
                     </Label>
                     <Label x:Name="CurrentMinTemperature" 
                            Foreground="White"
-                           Content="-20° C"
+                           Content="{Binding Path=CurrentMinTemperature}"
                            FontSize="30"
                            Padding="0 0">
                         <Label.ToolTip>
@@ -96,7 +114,7 @@
                     </Label>
                     <Label x:Name="CurrentPlace" 
                            Foreground="White"
-                           Content="Paris, Fr"
+                           Content="{Binding Path=CurrentPlace}"
                            FontSize="18"
                            Padding="0 0">
                         <Label.ToolTip>
@@ -108,6 +126,7 @@
         </Border>
 
         <StackPanel x:Name="DaysPanel"
+                    d:Opacity="1"
                     Grid.Column="1" 
                     Grid.Row="0"
                     Background="{StaticResource TransparentBlack}">
@@ -119,6 +138,7 @@
                 <Button Style="{StaticResource ButtonStyle}"
                         x:Name="CloseButton"
                         Content="✕"
+                        Padding="0"
                         FontSize="15"
                         Click="CloseButton_Click">
                     <Button.ToolTip>
@@ -129,6 +149,7 @@
                 <Button Style="{StaticResource ButtonStyle}"
                         x:Name="SettingsButton"
                         HorizontalAlignment="Left"
+                        Padding="0"
                         FontSize="13"
                         Content="⚙" Click="SettingsButton_Click">
                     <Button.ToolTip>
@@ -137,11 +158,12 @@
                 </Button>
 
                 <Button Style="{StaticResource ButtonStyle}"
-                        Padding="0 0 0 0"
+                        Padding="0"
                         x:Name="UpdateButton"
                         HorizontalAlignment="Left"
                         FontSize="17"
-                        Content="⭮" Click="UpdateButton_Click">
+                        Command="{Binding LoadWeatherDataCommand}"
+                        Content="⭮">
                     <Button.ToolTip>
                         <ToolTip>Update weather data</ToolTip>
                     </Button.ToolTip>
@@ -149,6 +171,7 @@
 
                 <Button Style="{StaticResource ButtonStyle}"
                         x:Name="HideButton"
+                        Padding="0"
                         Content="___" Click="HideButton_Click">
                     <Button.ToolTip>
                         <ToolTip>Hide Window</ToolTip>
@@ -157,11 +180,9 @@
 
             </StackPanel>
 
-            <controls:DayItemControl x:Name="Day1" />
-            <controls:DayItemControl x:Name="Day2"/>
-            <controls:DayItemControl x:Name="Day3"/>
-            <controls:DayItemControl x:Name="Day4"/>
-            <controls:DayItemControl x:Name="Day5"/>
+            <ItemsControl ItemsSource="{Binding Path=DayControls}">
+                
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </Window>

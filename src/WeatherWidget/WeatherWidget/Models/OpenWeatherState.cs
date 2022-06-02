@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WeatherWidget.Models
+namespace WeatherWidget.Helpers
 {
     /// <summary>
     /// Состояние погоды (каждый объект должен представлять данные о погоде с интервалом в 3 часа)

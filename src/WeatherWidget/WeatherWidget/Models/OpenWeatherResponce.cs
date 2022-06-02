@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WeatherWidget.Models.JSON;
+using WeatherWidget.Helpers.JSON;
 
-namespace WeatherWidget.Models
+namespace WeatherWidget.Helpers
 {
     /// <summary>
     /// Данные о погоде

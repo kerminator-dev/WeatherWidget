@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace WeatherWidget.Models.JSON
+namespace WeatherWidget.Helpers.JSON
 {
     /// <summary>
     /// Ответ от сервера OpenWeatherMap

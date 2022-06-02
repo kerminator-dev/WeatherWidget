@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WeatherWidget.Models
+namespace WeatherWidget.Helpers
 {
     /// <summary>
     /// Данные о погоде за день
@@ -87,7 +87,7 @@ namespace WeatherWidget.Models
         public string GetUniqueDescriptions()
         {
             // Получение уникальных типов погоды по убыванию
-            var uniqueDescription = WeatherStates.OrderByDescending(i => i.Description).DistinctBy( j => j.Description).ToList();
+            var uniqueDescription = WeatherStates.OrderByDescending(i => i.Description).DistinctBy(j => j.Description).ToList();
             string result = string.Empty;
 
             if (uniqueDescription.Count > 0)

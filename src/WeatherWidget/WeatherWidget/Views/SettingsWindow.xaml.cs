@@ -1,11 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using WeatherWidget.ViewModels;
 
 namespace WeatherWidget.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для SettingsWindow.xaml
-    /// </summary>
     public partial class SettingsWindow : Window
     {
         #region Реализация Singleton
@@ -15,7 +13,7 @@ namespace WeatherWidget.Views
         public static SettingsWindow Instance
         {
             get
-            { 
+            {
                 return _instance ?? (_instance = new SettingsWindow());
             }
         }
@@ -28,6 +26,7 @@ namespace WeatherWidget.Views
         private SettingsWindow()
         {
             InitializeComponent();
+            DataContext = new SettingsWindowViewModel();
         }
 
         /// <summary>
@@ -68,7 +67,6 @@ namespace WeatherWidget.Views
         /// <param name="e"></param>
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.Save();
             this.Hide();
         }
     }

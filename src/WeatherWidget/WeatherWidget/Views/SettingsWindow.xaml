@@ -8,7 +8,7 @@
         WindowStyle="None" MouseDown="Window_MouseDown"
         AllowsTransparency="True"
         Background="Black"
-        xmlns:properties="clr-namespace:WeatherWidget.Properties"
+        xmlns:properties="clr-namespace:WeatherWidget.Properties" xmlns:viewmodels="clr-namespace:WeatherWidget.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SettingsWindowViewModel}"
         WindowStartupLocation="CenterOwner">
 
     <Window.Resources>
@@ -165,6 +165,7 @@
                         <Button x:Name="SaveButton"
                                 HorizontalAlignment="Stretch"
                                 Margin="10 0 0 0"
+                                Command="{Binding SaveChangesCommand}"
                                 Style="{StaticResource FlatButtonStyle}"
                                 Content="Save changes"
                                 Background="#7033ff" Click="SaveButton_Click">
