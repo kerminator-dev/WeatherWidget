@@ -14,7 +14,13 @@ namespace WeatherWidget.Views
         {
             get
             {
-                return _instance ?? (_instance = new SettingsWindow());
+                if (_instance == null)
+                {
+                    _instance = new SettingsWindow();
+                    _instance.DataContext = new SettingsWindowViewModel();
+                }
+
+                return _instance;
             }
         }
 
@@ -26,7 +32,6 @@ namespace WeatherWidget.Views
         private SettingsWindow()
         {
             InitializeComponent();
-            DataContext = new SettingsWindowViewModel();
         }
 
         /// <summary>

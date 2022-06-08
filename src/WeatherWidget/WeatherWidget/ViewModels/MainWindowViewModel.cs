@@ -57,9 +57,11 @@ namespace WeatherWidget.ViewModels
             OnPropertyChanged(nameof(CurrentDayOfWeek));
         }
 
-        public void LoadData()
+        public MainWindowViewModel LoadData()
         {
             LoadWeatherDataCommand.Execute(null);
+
+            return this;
         }
 
         public void UpdateResponce(OpenWeatherResponce responce)

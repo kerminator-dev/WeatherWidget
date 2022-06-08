@@ -8,15 +8,33 @@
             <Setter Property="Margin" Value="10 10"/>
         </Style>
 
-        <Style x:Key="ButtonStyle" TargetType="Button">
-            <Setter Property="Cursor" Value="Hand"/>
+        <Style x:Key="ButtonStyleBase" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="SquareButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyleBase}">
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Margin" Value="3px"/>
-            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Width" Value="22px"/>
             <Setter Property="Height" Value="22px"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="00">
+                            <ContentControl VerticalAlignment="Center"
+                                            HorizontalAlignment="Center"
+                                            Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
@@ -29,19 +47,23 @@
             </Style.Resources>
         </Style>
 
-        <Style x:Key="FlatButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
-
+        <Style TargetType="Button" x:Key="FlatButtonStyle" BasedOn="{StaticResource ButtonStyleBase}">
             <Setter Property="Height" Value="30px"/>
             <Setter Property="Width" Value="Auto"/>
-            <Setter Property="Margin" Value="0 14"/>
-            <Setter Property="Padding" Value="10 0"/>
-            <Setter Property="Background" Value="#B33771"/>
-            <Style.Resources>
-                <Style TargetType="{x:Type Border}">
-                    <Setter Property="CornerRadius" Value="12" />
-                </Style>
-            </Style.Resources>
-
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderThickness="0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}"
+                                Padding="10 0"
+                                CornerRadius="10">
+                            <ContentControl VerticalAlignment="Center" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </Application.Resources>

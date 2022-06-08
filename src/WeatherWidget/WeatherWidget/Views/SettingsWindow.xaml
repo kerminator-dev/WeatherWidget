@@ -112,7 +112,7 @@
                             HorizontalAlignment="Stretch"
                             Orientation="Horizontal"
                             FlowDirection="RightToLeft">
-                    <Button Style="{StaticResource ButtonStyle}"
+                    <Button Style="{StaticResource SquareButtonStyle}"
                         x:Name="CloseButton"
                         Content="✕"
                         FontSize="15" Click="CloseButton_Click">
@@ -133,7 +133,7 @@
                              Background="#1d213d"
                              Padding="4px"
                              Foreground="White"
-                             Text="{Binding Source={x:Static properties:Settings.Default}, Path=CurrentCity, Mode=TwoWay}">
+                             Text="{Binding CurrentCity, Mode=TwoWay}">
                         <TextBox.ToolTip>
                             Current city
                         </TextBox.ToolTip>
@@ -141,8 +141,9 @@
 
                     <CheckBox Style="{StaticResource CheckBoxStyle}"
                               BorderBrush="White"
-                              
-                              IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartupUpdate, Mode=TwoWay}"> 
+                              IsEnabled="False"
+                              IsChecked="False">
+                          <!--IsChecked="{Binding Source={x:Static properties:Settings.Default}, Path=StartupUpdate, Mode=TwoWay}">--> 
                        
                         <TextBlock>
                             Receive weather data at startup
@@ -150,7 +151,8 @@
                     </CheckBox>
 
                     <StackPanel Orientation="Horizontal" 
-                                HorizontalAlignment="Right">
+                                HorizontalAlignment="Right"
+                                Margin="0 14 0 0">
 
                         <Button x:Name="CancelButton"
                                 HorizontalAlignment="Stretch"

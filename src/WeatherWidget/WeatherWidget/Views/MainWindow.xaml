@@ -135,7 +135,7 @@
                         Orientation="Horizontal"
                         FlowDirection="RightToLeft">
 
-                <Button Style="{StaticResource ButtonStyle}"
+                <Button Style="{StaticResource SquareButtonStyle}"
                         x:Name="CloseButton"
                         Content="✕"
                         Padding="0"
@@ -146,7 +146,7 @@
                     </Button.ToolTip>
                 </Button>
 
-                <Button Style="{StaticResource ButtonStyle}"
+                <Button Style="{StaticResource SquareButtonStyle}"
                         x:Name="SettingsButton"
                         HorizontalAlignment="Left"
                         Padding="0"
@@ -157,7 +157,7 @@
                     </Button.ToolTip>
                 </Button>
 
-                <Button Style="{StaticResource ButtonStyle}"
+                <Button Style="{StaticResource SquareButtonStyle}"
                         Padding="0"
                         x:Name="UpdateButton"
                         HorizontalAlignment="Left"
@@ -169,7 +169,7 @@
                     </Button.ToolTip>
                 </Button>
 
-                <Button Style="{StaticResource ButtonStyle}"
+                <Button Style="{StaticResource SquareButtonStyle}"
                         x:Name="HideButton"
                         Padding="0"
                         Content="___" Click="HideButton_Click">

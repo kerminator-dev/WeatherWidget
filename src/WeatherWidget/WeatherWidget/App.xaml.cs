@@ -9,18 +9,11 @@ namespace WeatherWidget
     /// </summary>
     public partial class App : Application
     {
-        private readonly MainWindowViewModel _mainWindowViewModel;
-        public App() : base()
-        {
-            _mainWindowViewModel = new MainWindowViewModel();
-        }
-
         protected override void OnStartup(StartupEventArgs e)
         {
-            _mainWindowViewModel.LoadData();
             MainWindow = new MainWindow()
             {
-                DataContext = _mainWindowViewModel
+                DataContext = new MainWindowViewModel().LoadData()
             };
             MainWindow.Show();
 
